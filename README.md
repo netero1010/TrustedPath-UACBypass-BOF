@@ -1,5 +1,5 @@
 # BOF - Trusted Path UAC Bypass
-Beacon object file implementation for trusted path UAC bypass
+Beacon object file implementation for trusted path UAC bypass. The target executable will be called without involving "cmd.exe" by using DCOM object.
 
 Technical details:
 
