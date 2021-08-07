@@ -21,8 +21,8 @@ Step 1: Upload the DLL payload to "C:\Windows\Tasks"
 Step 2: Create a new folder called "C:\Windows \System32"
 Step 3: Copy desired executable to "C:\Windows \System32"
 Step 4: Copy the DLL payload to "C:\Windows \System32"
-Step 5: Use DCOM to execute \"C:\\Windows \\System32\\<desired executable>\"
-Step 6: Delete the DLL payload on \"C:\\Windows\\Tasks\"
+Step 5: Use DCOM to execute "C:\\Windows \\System32\\<desired executable>"
+Step 6: Delete the DLL payload on "C:\\Windows\\Tasks"
 ================================================================================
 
 Example: bof-trustedpath-uacbypass ComputerFaults.exe /root/edputils.dll
