@@ -28,6 +28,8 @@ Step 6: Use DCOM to execute "C:\Windows \System32\<desired executable>"
 Example: bof-trustedpath-uacbypass ComputerFaults.exe /root/edputils.dll
 ```
 
+![HowTo](https://github.com/netero1010/TrustedPath-UACBypass-BOF/raw/main/execution.png)
+
 **Credit**
 
  @Wietze for excellent research by
