@@ -7,7 +7,7 @@ https://www.wietzebeukema.nl/blog/hijacking-dlls-in-windows
 
 **Usage**
 
-`Example: bof-trustedpath-uacbypass ComputerFaults.exe /root/edputils.dll`
+`Example: bof-trustedpath-uacbypass ComputerFaults.exe /root/edputil.dll`
 
 **Compile**
 
@@ -25,7 +25,7 @@ Step 5: Use DCOM to execute "C:\Windows \System32\<desired executable>"
 Step 6: Delete the DLL payload on "C:\Windows\Tasks"
 ================================================================================
 
-Example: bof-trustedpath-uacbypass ComputerFaults.exe /root/edputils.dll
+Example: bof-trustedpath-uacbypass ComputerFaults.exe /root/edputil.dll
 ```
 
 ![HowTo](https://github.com/netero1010/TrustedPath-UACBypass-BOF/raw/main/execution.png)
