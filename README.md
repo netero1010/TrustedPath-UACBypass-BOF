@@ -31,9 +31,9 @@ Example: bof-trustedpath-uacbypass ComputerDefaults.exe /root/edputil.dll
 ![HowTo](https://github.com/netero1010/TrustedPath-UACBypass-BOF/raw/main/execution.png)
 
 **Credit**
-@David Wells and @Wietze for excellent research
+@David Wells and @Wietze for excellent research  
 https://medium.com/tenable-techblog/uac-bypass-by-mocking-trusted-directories-24a96675f6e
 https://www.wietzebeukema.nl/blog/hijacking-dlls-in-windows
 
-@Yas_o_h for the awesome DCOM BOF implementation
+@Yas_o_h for the awesome DCOM BOF implementation  
 https://github.com/Yaxser/CobaltStrike-BOF/tree/master/DCOM%20Lateral%20Movement
