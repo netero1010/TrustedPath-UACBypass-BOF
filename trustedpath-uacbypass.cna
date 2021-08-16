@@ -1,7 +1,13 @@
 # Credit to @Yas_o_h for his awesome DCOM BOF implementation
 
 beacon_command_register("bof-trustedpath-uacbypass", "BOF implementation for trusted path UAC bypass", 
-"====================Trusted Path UAC Bypass BOF Workflow=======================
+"
+Version: 1.0
+Author: Chris Au
+Twitter: @netero_1010
+Github: @netero1010
+
+====================Trusted Path UAC Bypass BOF Workflow=======================
 Step 1: Upload the DLL payload to \"C:\\Windows\\Tasks\"
 Step 2: Create a new folder called \"C:\\Windows \\System32\"
 Step 3: Copy desired executable to \"C:\\Windows \\System32\"
