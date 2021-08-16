@@ -16,6 +16,11 @@ https://www.wietzebeukema.nl/blog/hijacking-dlls-in-windows
 **Execution**
 ```
 beacon> help bof-trustedpath-uacbypass
+Version: 1.0
+Author: Chris Au
+Twitter: @netero_1010
+Github: @netero1010
+
 ====================Trusted Path UAC Bypass BOF Workflow=======================
 Step 1: Upload the DLL payload to "C:\Windows\Tasks"
 Step 2: Create a new folder called "C:\Windows \System32"
